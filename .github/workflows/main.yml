@@ -14,11 +14,11 @@ jobs:
         # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
         python-version: 3.13
 
-    - name: Pip Installer
-      uses: BSFishy/pip-action@v1
-      
     - name: Activate virtual environment
       run: echo PATH=${GITHUB_WORKSPACE}/.venv/bin:$PATH >> $GITHUB_ENV
+      
+    - name: pip intaller 
+      run: pip install
       
     - name: PyInstaller Windows
       run: pyinstaller app.py
