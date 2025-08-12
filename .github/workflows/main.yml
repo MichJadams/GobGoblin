@@ -24,7 +24,7 @@ jobs:
       
     - name: PyInstaller Windows
       run: |
-        . .venv/Scripts/activate
+        .\.venv\Scripts\activate
         pyinstaller app.py
 
     - name: Upload Build Artifacts
