@@ -1,23 +1,33 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
 
+from PySide6.QtGui import QIcon
+from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QHBoxLayout, QWidget
+from PySide6.QtCore import QSize
+
+from applications.container import ApplicationContainer
+from applications.database import Database
+from components.menu import Menu
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-
         self.setWindowTitle("Gob Goblin")
+        self.database = Database()
+        self.menu = Menu()
+        self.main_content = ApplicationContainer(self.database)
 
-        button = QPushButton("Feed!")
+        layout = QHBoxLayout()
+        layout.addWidget(self.menu)
+        layout.addWidget(self.main_content)
 
-        button.setCheckable(True)
-        button.clicked.connect(self.feed_me)
-        self.setCentralWidget(button)
-    def feed_me(self):
-        print("clicked")
+        container = QWidget()
+        container.setLayout(layout)
+        self.setWindowIcon(QIcon("resources/gob_goblin.png"))
+        self.setCentralWidget(container)
+        self.setFixedSize(800, 600)
+
 
 app = QApplication(sys.argv)
 window = MainWindow()
 window.show()
-
-app.exec()
+sys.exit(app.exec())
