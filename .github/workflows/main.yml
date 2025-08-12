@@ -17,10 +17,11 @@ jobs:
     - name: Pip Installer
       uses: BSFishy/pip-action@v1
       
+    - name: Activate virtual environment
+      run: echo PATH=${GITHUB_WORKSPACE}/.venv/bin:$PATH >> $GITHUB_ENV
+      
     - name: PyInstaller Windows
-      uses: JackMcKew/pyinstaller-action-windows@v0.1.2
-      with:
-        path: ./
+      run: pyinstaller app.py
 
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v4.6.2
