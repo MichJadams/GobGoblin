@@ -20,7 +20,7 @@ jobs:
       run: dir
       
     - name: pip intaller 
-      run: pip install -r requirments.txt
+      run: pip install -r requirements.txt
       
     - name: PyInstaller Windows
       run: pyinstaller app.py
