@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - name: Setup Python
-    - uses: actions/setup-python@v5.6.0
+      uses: actions/setup-python@v5.6.0
       with:
         # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
         python-version: 3.13
