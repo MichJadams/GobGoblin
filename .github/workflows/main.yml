@@ -16,14 +16,15 @@ jobs:
       with:
         # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
         python-version: 3.13
-    - name: where am I?
-      run: dir
       
     - name: pip intaller 
       run: pip install -r requirements.txt
       
+    - name: where am I?
+      run: dir
+      
     - name: PyInstaller Windows
-      run: python -m pyinstaller app.py
+      run: pip pyinstaller app.py
 
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v4.6.2
